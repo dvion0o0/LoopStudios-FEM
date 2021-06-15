@@ -1,13 +1,384 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* - White: hsl(0, 0%, 100%)
+- Black: hsl(0, 0%, 0%)
+- Dark Gray: hsl(0, 0%, 55%)
+- Very Dark Gray: hsl(0, 0%, 41%)
+
+### Neutral
+
+## Typography
+
+### Body Copy
+
+- Font size: 15px
+
+### Fonts
+
+- Family: [Alata](https://fonts.google.com/specimen/Alata)
+- Weight: 400
+
+- Family: [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans)
+- Weight: 300 */
+
+@import url("https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap");
+
+:root {
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --darkGray: hsl(0, 0%, 55%);
+  --varyDarkGray: hsl(0, 0%, 41%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  font-family: "Alata", sans-serif;
+  font-weight: 400;
+  color: var(--white);
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  background: url(./images/mobile/image-hero.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+  position: relative;
+  padding: 1rem 0 0 0;
+}
+
+.header-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  position: relative;
+  height: 80vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.toggle {
+  transition: 0.3s all ease-in-out;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  transform: rotate(180deg);
+}
+
+.hero-content {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  color: var(--white);
+  border: 2px solid var(--white);
+  padding: 1rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  line-height: 1.1;
+}
+
+.nav-links {
+  display: none;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 1rem;
+  align-items: center;
+}
+
+.nav-link {
+  transition: 0.3s all ease-in-out;
+}
+.nav-link:hover {
+  border-bottom: 1px solid var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    background: url(./images/desktop/image-hero.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-content {
+    width: 42%;
+    justify-content: start;
+    padding: 1.5rem;
+  }
+
+  .nav-links {
+    display: grid;
+  }
+
+  .toggle {
+    display: none;
+  }
+}
+
+.about {
+  padding: 4rem 0;
+}
+
+.about-center {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+}
+
+.about-center img {
+  width: 100%;
+}
+
+.about-content {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: white;
+  padding: 2rem 2rem;
+  row-gap: 1.2rem;
+}
+
+.about-content p {
+  line-height: 1.5;
+  color: var(--varyDarkGray);
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .about-center {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-content {
+    place-items: start;
+    text-align: left;
+    padding: 3rem 5rem;
+    transform: translateX(-20%);
+    align-self: end;
+  }
+
+  .about-content h1 {
+    text-align: left;
+  }
+}
+
+.projects {
+  margin: 2rem 0 4rem 0;
+}
+
+.projects-center {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: grid;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--black);
+}
+
+.project-header > button {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid var(--darkGray);
+  outline: transparent;
+  color: var(--black);
+  cursor: pointer;
+  transition: 0.3s all linear;
+  font-weight: 400;
+}
+
+.project-header > button:hover {
+  background: var(--black);
+  color: var(--white);
+  border: transparent;
+}
+
+.projects-img-container {
+  margin-top: 2.5rem;
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project {
+  position: relative;
+  cursor: pointer;
+}
+
+.project-image {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+.project img {
+  width: 100%;
+}
+
+.project h2 {
+  position: absolute;
+  color: var(--white);
+  bottom: 10%;
+  left: 5%;
+  font-family: "Alata", sans-serif;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .projects-img-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .project h2 {
+    bottom: 5%;
+  }
+}
+
+footer {
+  background: var(--black);
+  padding: 3rem 0;
+}
+
+.footer-center {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  row-gap: 1rem;
+}
+
+.footer-logo-container {
+  display: grid;
+  row-gap: 1rem;
+}
+
+.footer-links {
+  display: grid;
+  row-gap: 1rem;
+}
+
+.footer-link {
+  transition: 0.3s all linear;
+}
+
+.footer-link:hover {
+  border-bottom: 2px solid var(--white);
+}
+
+.footer-social-container {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  row-gap: 1rem;
+}
+
+.footer-social-container p {
+  color: var(--darkGray);
+  font-family: "Alata", sans-serif;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1rem;
+}
+
+.social-links svg {
+  color: var(--white);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .footer-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+aside {
+  background: var(--black);
+  min-height: 100vh;
+  display: none;
+  position: fixed;
+  top: 0%;
+  left: -100%;
+  width: 100vw;
+  z-index: 999;
+  padding: 4rem 0;
+  transition: 0.3s all ease-in-out;
+}
+
+.active {
+  display: grid;
+  left: 0;
+  transition: 0.3s all linear;
+}
+
+.sidebar-center {
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.close {
+  cursor: pointer;
+  transition: 0.3s all linear;
+}
+
+.close:hover {
+  transform: rotate(180deg);
+}
+
+.side-links {
+  display: grid;
+  transform: translateY(-20%);
+}
+
+.side-link {
+  font-size: 22px;
+  transition: 0.3s all linear;
+}
+
+.side-link:hover {
+  border-bottom: 2px solid var(--white);
 }
